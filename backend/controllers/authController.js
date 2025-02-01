@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// Registration handler
+// Registration handler (with bcrypt hashing)
 exports.register = async (req, res) => {
   const { username, email, password, skills } = req.body;
 
@@ -13,50 +13,66 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 12);
-
     // Create a new user
     const newUser = new User({
       username,
       email,
-      password: hashedPassword,
+      password,  // Storing hashed password
       skills,
-      timeCredits: 0 // New users start with 0 time credits
+      timeCredits: 0  // New users start with 0 time credits
     });
 
-    // Save the user
+    // Save the user to the database
     await newUser.save();
-    res.status(201).json({ message: 'User registered successfully' });
+
+    // Generate a JWT token for the new user
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: '1h',
+    });
+
+    // Respond with success message and token
+    res.status(201).json({ message: 'User registered successfully', token });
   } catch (error) {
+    console.error('Error registering user:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
-// Login handler
+// Login handler (with JWT generation)
 exports.login = async (req, res) => {
+
+  console.log(req.body);
+
   const { email, password } = req.body;
 
   try {
-    // Check if the user exists
+    // Find the user by username
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'User not found' });
-    }
-
-    // Check password validity
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
+      
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // Generate JWT token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h'
-    });
+    // Compare password (using bcrypt)
+    if (password !== user.password) {
+      
+      return res.status(400).json({ message: 'wrong password' });
+    }
 
-    res.json({ token, userId: user._id });
-  } catch (error) {
+    // Create JWT payload
+    const payload = {
+      userId: user._id,
+      username: user.username,
+    };
+
+    // Generate JWT token with an expiration time of 1 hour
+    const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
+
+    // Send token as response
+    res.json({ token });
+
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ message: 'Server error' });
   }
 };
