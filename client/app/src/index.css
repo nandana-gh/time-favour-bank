@@ -1,68 +1,207 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* Reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Full Page Layout */
+body {
+  background: linear-gradient(135deg, #646cff, #535bf2);
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Header */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(36, 36, 36, 0.9);
+  color: white;
+  padding: 15px 30px;
+  width: 90%;
+  border-radius: 10px;
+  position: fixed;
+  top: 10px;
+  text-align: center;
 }
 
-button {
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffdd57;
+}
+
+nav .login-btn, .signup-btn {
+  background-color: #ffdd57;
+  color: #242424;
+  padding: 10px 15px;
+  border: none;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.signup-btn {
+  background-color: #ff884d;
+}
+
+nav .login-btn:hover,
+.signup-btn:hover {
+  opacity: 0.8;
+}
+
+/* Main Layout */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 50px;
+  gap: 40px;
+  text-align: center;
+}
+
+/* Centering the Content */
+.content {
+  text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+}
+
+.content h1 {
+  font-size: 2.8em;
+  font-weight: bold;
+  color: #242424;
+}
+
+.highlight {
+  color: #646cff;
+}
+
+.content p {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+/* Search Box */
+.content input {
+  width: 80%;
+  padding: 15px;
+  font-size: 1em;
+  border: 2px solid #646cff;
+  border-radius: 8px;
+  text-align: center;
+  outline: none;
+}
+
+/* Website List */
+.website-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.website {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.website:hover {
+  transform: translateY(-5px);
+}
+
+/* Website List Grid */
+.website-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Center Main Container */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 0;
+}
+
+/* Center Content */
+.content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Search Box Centering */
+.content input {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #242424;
+  color: white;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  position: fixed;
+  bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+footer p {
+  font-size: 1em;
 }

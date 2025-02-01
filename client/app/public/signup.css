@@ -1,0 +1,118 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    background-image: url('signup_bg.png'); /* Make sure the path is correct */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+/* Header Styling */
+header {
+    width: 100%;
+    background-color: #646cff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Signup Container */
+.signup-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 50px;
+}
+
+/* Signup Form Styling */
+.signup-container form {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    width: 100%;
+}
+
+.signup-container input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #646cff;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Button Styling */
+.signup-container button {
+    width: 95%;
+    background-color: #646cff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.signup-container button:hover {
+    background-color: #535bf2;
+}
+
+/* Login link styling */
+.signup-container p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup-container p a {
+    color: #646cff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+}
