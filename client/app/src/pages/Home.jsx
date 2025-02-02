@@ -1,103 +1,111 @@
-import React, { useState, useEffect } from 'react';
-import ServiceForm from '../components/ServiceForm';
-import ServiceCard from '../components/ServiceCard';
-import axios from 'axios';
+
+import React, { useState } from 'react';
+import "../styles/Home.css";
 
 const Home = () => {
-  const [services, setServices] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+    const [email, setEmail] = useState('');
 
-  // Fetch services when logged in
-  useEffect(() => {
-    const fetchServices = async () => {
-      const token = localStorage.getItem('authToken');  // Get the token from localStorage
-      if (token) {
-        try {
-          const response = await axios.get('http://localhost:5000/api/services', {
-            headers: {
-              Authorization: `Bearer ${token}`,  // Include JWT token in the Authorization header
-            },
-          });
-          setServices(response.data); // Set the services from the API response
-        } catch (err) {
-          console.error('Error fetching services:', err);
-        }
-      }
+    const redirectToSignup = () => {
+        window.location.href = "signup.html";
     };
 
-    if (isLoggedIn) {
-      fetchServices();  // Only fetch services if logged in
-    }
-  }, [isLoggedIn]);  // Dependency array ensures it runs when `isLoggedIn` changes
+    const redirectToDashboard = (event) => {
+        event.preventDefault();
+        localStorage.setItem("userEmail", email);
+        window.location.href = "dashboard.html";
+    };
 
-  const handleNewService = (newService) => {
-    setServices([...services, newService]);
-  };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      // Update login request URL to point to the backend
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-      if (response.data.token) {
-        localStorage.setItem('authToken', response.data.token);  // Store the token in localStorage
-        console.log(localStorage.getItem('authToken'));
-        setIsLoggedIn(true);  // Set logged-in state
-      }
-    } catch (err) {
-      setError('Invalid credentials');
-    }
-  };
-
-  if (!isLoggedIn) {
     return (
-      <div>
-        <h2>Login</h2>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <form onSubmit={handleLogin}>
-          <div>
-            <label>Email:</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label>Password:</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    );
-  }
+        <div>
+            <header>
+                <div className="logo">HourBank</div>
+                <nav>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <button className="login-btn" onClick={redirectToSignup}>Signup</button>
+                </nav>
+            </header>
 
-  return (
-    <div>
-      <h2>Available Services</h2>
-      <ServiceForm onServiceSubmit={handleNewService} />
-      <div>
-        {services.length > 0 ? (
-          services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
-          ))
-        ) : (
-          <p>No services available</p>
-        )}
-      </div>
-    </div>
-  );
+            <main>
+                <div className="content">
+                    <h1>Trade time. <span className="highlight">Build skills.</span> Grow together.</h1>
+                    <input type="text" placeholder="Search" />
+                    <div className="website-list">
+                        <div className="website" onClick={redirectToSignup}>
+                            <img src="landing1.jpg" alt="Website Preview" />
+                            <h3>LeadForward: Cultivating Future Leaders</h3>
+                            <p>Dr. Michael Brown</p>
+                        </div>
+                        <div className="website" onClick={redirectToSignup}>
+                            <img src="landing2.jpg" alt="Website Preview" />
+                            <h3>Graphic Alchemy: Transforming Ideas into Visuals</h3>
+                            <p>Dr. Sam Harrison</p>
+                        </div>
+                        <div className="website" onClick={redirectToSignup}>
+                            <img src="landing3_1.png" alt="Website Preview" />
+                            <h3>The Ergonomic Eye: Optimizing Space for Human Interaction</h3>
+                            <p>Sarah Jones</p>
+                        </div>
+                        <div className="website" onClick={redirectToSignup}>
+                            <img src="landing4.png" alt="Website Preview" />
+                            <h3>Building Bridges: Fostering Effective Team Communication</h3>
+                            <p>Dr. Carlos Rodriguez</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="right-container">
+                    <div className="login-section">
+                        <h2>Login</h2>
+                        <form onSubmit={redirectToDashboard}>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                placeholder="Email" 
+                                value={email} 
+                                onChange={(e) => setEmail(e.target.value)} 
+                                required 
+                            />
+                            <input 
+                                type="password" 
+                                id="password" 
+                                placeholder="Password" 
+                                required 
+                            />
+                            <button type="submit">Login</button>
+                        </form>
+                        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                    </div>
+
+                    <section className="faq">
+                        <h2>Frequently Asked Questions</h2>
+                        <div className="faq-item">
+                            <button className="faq-question">What is HourBank?</button>
+                            <div className="faq-answer">
+                                <p>HourBank is a time-banking platform where users can trade skills and services with others without using money. Earn hours by offering your skills and spend them to learn something new.</p>
+                            </div>
+                        </div>
+                        <div className="faq-item">
+                            <button className="faq-question">How does HourBank work?</button>
+                            <div className="faq-answer">
+                                <p>Users can offer their skills in various categories and earn time credits for their service. These credits can then be used to learn new skills from other users.</p>
+                            </div>
+                        </div>
+                        <div className="faq-item">
+                            <button className="faq-question">Is HourBank free to use?</button>
+                            <div className="faq-answer">
+                                <p>Yes! HourBank is completely free. It is based on exchanging time instead of money, making it accessible for everyone.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+            <footer>
+                © 2025 HourBank. All rights reserved.
+            </footer>
+        </div>
+    );
 };
 
 export default Home;

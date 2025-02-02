@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const path = require('path');
 const serviceRoutes = require('./routes/serviceRoutes'); // Assuming this is your routes for services
 const authRoutes = require('./routes/authRoutes'); // Assuming you have the authRoutes for registration/login
 
@@ -16,6 +17,23 @@ const app = express();
 // Middleware
 app.use(express.json()); // For parsing application/json
 app.use(cors()); // Enable Cross-Origin Resource Sharing (CORS)
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+// Serve HTML pages as static files
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'signup.html'));
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'about.html'));
+});
 
 // MongoDB connection
 console.log(process.env.MONGODB_URI);

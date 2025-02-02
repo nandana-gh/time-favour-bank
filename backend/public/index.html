@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HourBank</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">HourBank</div>
+        <nav>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>  <!-- Updated link to Contact page -->
+            <button class="login-btn" onclick="redirectToSignup()">Signup</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="content">
+            <h1>Trade time. <span class="highlight">Build skills.</span> Grow together.</h1>
+            <input type="text" placeholder="Search">
+
+            <div class="website-list">
+                <div class="website" onclick="redirectToSignup()">
+                    <img src="landing1.jpg" alt="Website Preview">
+                    <h3>LeadForward: Cultivating Future Leaders</h3>
+                    <p>Dr. Michael Brown</p>
+                </div>
+                <div class="website" onclick="redirectToSignup()">
+                    <img src="landing2.jpg" alt="Website Preview">
+                    <h3>Graphic Alchemy: Transforming Ideas into Visuals</h3>
+                    <p>Dr. Sam Harrison</p>
+                </div>
+                <div class="website" onclick="redirectToSignup()">
+                    <img src="lanidng3_1.png" alt="Website Preview">
+                    <h3>The Ergonomic Eye: Optimizing Space for Human Interaction</h3>
+                    <p>Sarah Jones</p>
+                </div>
+                <div class="website" onclick="redirectToSignup()">
+                    <img src="landing4.png" alt="Website Preview">
+                    <h3>Building Bridges: Fostering Effective Team Communication</h3>
+                    <p>Dr. Carlos Rodriguez</p>
+                </div>
+            </div>
+        </div>
+
+       
+      <div class="right-container">
+        <div class="login-section">
+            <h2>Login</h2>
+            <form onsubmit="redirectToDashboard(event)">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        </div>
+    
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <button class="faq-question">What is HourBank?</button>
+                <div class="faq-answer">
+                    <p>HourBank is a time-banking platform where users can trade skills and services with others without using money. Earn hours by offering your skills and spend them to learn something new.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How does HourBank work?</button>
+                <div class="faq-answer">
+                    <p>Users can offer their skills in various categories and earn time credits for their service. These credits can then be used to learn new skills from other users.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is HourBank free to use?</button>
+                <div class="faq-answer">
+                    <p>Yes! HourBank is completely free. It is based on exchanging time instead of money, making it accessible for everyone.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+      
+    </main>
+
+    <footer>
+        © 2025 HourBank. All rights reserved.
+    </footer>
+
+    <script>
+        function redirectToSignup() {
+            window.location.href = "signup.html";
+        }
+
+        function redirectToDashboard(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            localStorage.setItem("userEmail", email);
+            window.location.href = "dashboard.html";
+        }
+    </script>
+   <script>
+    document.querySelectorAll(".faq-question").forEach(button => {
+        button.addEventListener("click", function () {
+            this.classList.toggle("active");
+            let answer = this.nextElementSibling;
+            answer.style.display = answer.style.display === "block" ? "none" : "block";
+        });
+    });
+</script>
+ 
+</body>
+
+</html>

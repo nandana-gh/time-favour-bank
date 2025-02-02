@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HourBank</title>
+    <link rel="stylesheet" href="dashboard.css">  <!-- Fixed CSS reference -->
+</head>
+<body>
+    <header>
+        <div class="logo">🌐 HourBank</div>
+        <nav>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+        <h2>Welcome, <span id="user-email"></span></h2>
+        
+        <h3>Upload a Video</h3>
+        <input type="file" id="video-upload" accept="video/*">
+        <input type="number" id="video-duration" placeholder="Enter duration in minutes" min="1">
+        <button onclick="uploadVideo()">Upload</button>
+        
+        <h3>Your Time Credits: <span id="time-credits">0</span></h3>
+
+        <h3>Watch a Skill Video</h3>
+        <input type="number" id="watch-duration" placeholder="Minutes to watch" min="10">
+        <button onclick="watchVideo()">Watch</button>
+    </main>
+
+    <script src="dashboard.js"></script>  <!-- Fixed script reference -->
+</body>
+</html>

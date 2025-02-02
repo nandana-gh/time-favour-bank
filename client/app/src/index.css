@@ -1,4 +1,4 @@
-/* Reset */
+Reset
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@ body {
   background: linear-gradient(135deg, #646cff, #535bf2);
   display: flex;
   flex-direction: column;
-  height: 100vh;
+
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -25,7 +25,7 @@ header {
   background-color: rgba(36, 36, 36, 0.9);
   color: white;
   padding: 15px 30px;
-  width: 90%;
+  
   border-radius: 10px;
   position: fixed;
   top: 10px;
@@ -204,4 +204,8 @@ footer {
 
 footer p {
   font-size: 1em;
+}
+
+.about{
+  background-image: url('./assets/about.jpg');
 }

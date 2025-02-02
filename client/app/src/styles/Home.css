@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Merriweather:wght@700&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audrey&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faustine&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+@font-face {
+    font-family: 'Palmer Script';
+    src: url('fonts/PalmerScript-Regular.woff2') format('woff2'),
+         url('fonts/PalmerScript-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+h1 {
+    font-family: 'Audrey', sans-serif, cursive;
+    font-weight: bold;
+}
+
+p {
+    font-family: 'Faustine', sans-serif, cursive;
+}
+
+/* Full Page Layout */
+body {
+    background: linear-gradient(135deg, #646cff, #535bf2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(243, 238, 238, 0.952);
+    color: white;
+    padding: 15px 30px;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Logo */
+.logo {
+    font-size: 2.2em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #3b09c4;
+    text-transform: uppercase;
+    transition: 0.3s;
+    font-family: 'Cormorant Garamond', 'Dancing Script', cursive;
+}
+
+.logo:hover {
+    color: #ff884d;
+    transform: scale(1.05);
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Style for all navigation links including Signup */
+nav a, .login-btn {
+    text-decoration: none;
+    font-size: 1.1em;
+    color: #3b09c4;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+nav a:hover, .login-btn:hover {
+    color: #ff884d;
+}
+
+/* Main Layout */
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    gap: 40px;
+}
+
+/* Content */
+.content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 65%;
+    flex: 2;
+    text-align: left;
+}
+
+/* Search Box */
+.content input {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    font-size: 1em;
+    border: 2px solid #646cff;
+    border-radius: 8px;
+    text-align: center;
+    outline: none;
+    margin: 15px 0;
+}
+
+/* Website List */
+.website-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.website {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.website img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.website:hover {
+    transform: translateY(-5px);
+}
+
+/* Login Section */
+.login-section {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    max-width: 320px;
+}
+
+/* Login Form */
+.login-section input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #646cff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.login-section button {
+    width: 100%;
+    background-color: #646cff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.login-section button:hover {
+    background-color: #535bf2;
+}
+
+/* FAQ Section */
+.faq {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    max-width: 320px;
+    margin-top: 20px;
+}
+
+.faq h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    background: #646cff;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.faq-question:hover {
+    background: #535bf2;
+}
+
+.faq-answer {
+    display: none;
+    padding: 10px;
+    border-left: 3px solid #646cff;
+    background: #f8f8f8;
+    margin-top: 5px;
+}
+
+.faq-question.active + .faq-answer {
+    display: block;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #242424;
+    color: white;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+    margin-top: 20px;
+}

@@ -1,13 +1,13 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-    const userEmail = localStorage.getItem("userEmail");
-
-    if (!userEmail) {
-        alert("You must log in first!");
-        window.location.href = "index.html"; // Redirect to login page
-    } else {
-        document.getElementById("user-email").textContent = userEmail;
-    }
+    if (window.location.pathname.includes("dashboard.html")) {
+        const email = localStorage.getItem("email");
+        if (email) {
+            document.getElementById("user-email").textContent = email;
+            document.getElementById("time-credits").textContent = localStorage.getItem("credits") || 0;
+        } else {
+            window.location.href = "index.html"; 
+        }
+    }
 });
 
 function handleLogin(event) {
